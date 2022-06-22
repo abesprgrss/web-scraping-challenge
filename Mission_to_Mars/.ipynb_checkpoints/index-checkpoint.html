@@ -16,20 +16,20 @@
       <p>Red Planet</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">About Mars</a></p>
     </div>
-    <div class="row">
-    <img src="{{ featured.featured_img_url }}" alt="Closeup">
-    <div>
-    <div class="row">
-      <div class="col-md-3">
-    <h2>In the news: \n {{ title.news_title }}</h2>
-    <h3>{{ paragraph.news_p }}</h3>
+      <div class="row">
+      <img src="{{ featured.featured_img_url }}" alt="Closeup">
       </div>
-    </div>
+      <div class="row">
+        <div class="col-md-3">
+          <h2>In the news: \n {{ title.news_title }}</h2>
+          <h3>{{ paragraph.news_p }}</h3>
+        </div>
+      </div>
     <div class="row">
       <div class="col-md-9">
         <h2>{{table.mars_table}}</h2>
       </div>
-      
+    </div>         
   </div>
 </body>
 

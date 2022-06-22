@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect
+from flask import url_for, request, flash
 from flask_pymongo import PyMongo
 import scrape_mars
 # Creating an instance for Flask
@@ -14,13 +15,13 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/phone_app")
 
 @app.route("/")
 def index():
-    marsdict = mongo.db.listings.find_one()
+    marsdict = mongo.db.marsdict.find_one()
     return render_template("index.html", marsdict=marsdict)
 
 
 @app.route("/scrape")
 def scraper():
-    marsdict = mongo.db.listings
+    marsdict = mongo.db.marsdict
     marsdict_data = scrape_mars.scrape()
     marsdict.insert_one(marsdict_data)
     #listings.update({}, listings_data, upsert=True)
