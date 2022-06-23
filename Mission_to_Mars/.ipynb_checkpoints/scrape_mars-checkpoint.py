@@ -103,4 +103,4 @@ def scrape():
             
             marsdict['images'] = hemisphere_image_urls
 
-    return listings
+    return marsdict

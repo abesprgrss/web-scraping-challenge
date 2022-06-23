@@ -13,19 +13,21 @@ app = Flask(__name__)
 mongo = PyMongo(app, uri="mongodb://localhost:27017/phone_app")
 
 
+@app.route("/scrape")
+def scraper():
+    marsdict = mongo.db.marsdict
+    marsdict_data = scrape_mars.scrape()
+    #marsdict.insert_one(marsdict_data)
+    marsdict.update({}, marsdict_data, upsert=True)
+    return redirect("/", code=302)
+
 @app.route("/")
 def index():
     marsdict = mongo.db.marsdict.find_one()
     return render_template("index.html", marsdict=marsdict)
 
 
-@app.route("/scrape")
-def scraper():
-    marsdict = mongo.db.marsdict
-    marsdict_data = scrape_mars.scrape()
-    marsdict.insert_one(marsdict_data)
-    #listings.update({}, listings_data, upsert=True)
-    return redirect("/", code=302)
+
 
 
 if __name__ == "__main__":
