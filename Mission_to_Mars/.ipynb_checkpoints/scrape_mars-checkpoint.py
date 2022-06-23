@@ -1,10 +1,10 @@
 from splinter import Browser
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
 from webdriver_manager.chrome import ChromeDriverManager
 import flask
 import pandas as pd
 import splinter as spl
-
+import pymongo
 
 
 def scrape():
@@ -94,14 +94,14 @@ def scrape():
             
             
             
-            hemisphere_image_urls = [
+            hemisphere = [
                 {'title': 'Cerberus Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/cerberus_enhanced.tif'},
                 {'title': 'Schiaparelli Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/schiaparelli_enhanced.tif'},
                 {'title': 'Syrtis Major Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/syrtis_major_enhanced.tif'},
                 {'title': 'Valles Marineris Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/valles_marineris_enhanced.tif'}
             ]
             
-            marsdict['images'] = hemisphere_image_urls
+            marsdict['images'] = hemisphere
             
         
 

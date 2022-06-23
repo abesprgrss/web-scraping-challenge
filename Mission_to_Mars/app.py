@@ -17,8 +17,8 @@ mongo = PyMongo(app, uri="mongodb://localhost:27017/phone_app")
 def scraper():
     marsdict = mongo.db.marsdict
     marsdict_data = scrape_mars.scrape()
-    #marsdict.insert_one(marsdict_data)
-    marsdict.update({}, marsdict_data, upsert=True)
+    marsdict.insert_one(marsdict_data)
+    #marsdict.update({}, marsdict_data, upsert=True)
     return redirect("/", code=302)
 
 @app.route("/")

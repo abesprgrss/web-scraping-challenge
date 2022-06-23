@@ -12,24 +12,34 @@
 <body>
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1>Visit the...</h1>
-      <p>Red Planet</p>
+      <h1>Visit the...<br></h1>
+      <h1><b>Red Planet</b></h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">About Mars</a></p>
     </div>
+  </div>
+  <div class="container">
       <div class="row">
-        <p> {{ featured.featured_img_url }}</p>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <h2>In the news: \n {{ title.news_title }}</h2>
-          <h3>{{ paragraph.news_p }}</h3>
+        <div class="col">
+        <h2>Featured Image</h2>
+        <img src={{  marsdict.featured }}>
+        </div>
+        <div class="col">
+          <h1>In the news: {{ marsdict.title }}</h1>
+          <h2>{{ marsdict.paragraph }}</h2>
         </div>
       </div>
     <div class="row">
-      <div class="col-md-9">
-        <h2>{{table.mars_table}}</h2>
+      <div class="col">
+        <h2>Some quick facts about Mars.</h2>
+        <div> {{marsdict.table}}</div>        
       </div>
-    </div>         
+    </div> 
+    <h3>Check out the hemispheres of Mars!</h3>
+    <ul style="list-style: none;">
+    {% for x in hemisphere %}
+          <li>{{ x.title }}: <img src={{ x.img_url }}></li>
+        {% endfor %}
+    </ul>
   </div>
 </body>
 
