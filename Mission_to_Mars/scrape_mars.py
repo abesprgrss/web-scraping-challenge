@@ -95,12 +95,14 @@ def scrape():
             
             
             hemisphere_image_urls = [
-                {'title1': 'Cerberus Hemisphere Enhanced', 'img_url1': 'https://marshemispheres.com/images/cerberus_enhanced.tif'},
-                {'title2': 'Schiaparelli Hemisphere Enhanced', 'img_url2': 'https://marshemispheres.com/images/schiaparelli_enhanced.tif'},
-                {'title3': 'Syrtis Major Hemisphere Enhanced', 'img_url3': 'https://marshemispheres.com/images/syrtis_major_enhanced.tif'},
-                {'title4': 'Valles Marineris Hemisphere Enhanced', 'img_url4': 'https://marshemispheres.com/images/valles_marineris_enhanced.tif'}
+                {'title': 'Cerberus Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/cerberus_enhanced.tif'},
+                {'title': 'Schiaparelli Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/schiaparelli_enhanced.tif'},
+                {'title': 'Syrtis Major Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/syrtis_major_enhanced.tif'},
+                {'title': 'Valles Marineris Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/valles_marineris_enhanced.tif'}
             ]
             
             marsdict['images'] = hemisphere_image_urls
+            
+        
 
     return marsdict
