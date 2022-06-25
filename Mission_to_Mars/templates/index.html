@@ -9,18 +9,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-<body>
-  <div class="container-fluid">
-    <div class="jumbotron text-center">
+<body style="background-color:rgb(197, 115, 94) ;">
+  <div class="container-fluid" style="color: rgb(233, 140, 116);" >
+    <div class="jumbotron text-center" style="background-color:rgb(119, 94, 64)">
       <h1>Visit the...<br></h1>
       <h1><b>Red Planet</b></h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">About Mars</a></p>
     </div>
   </div>
-  <div class="container">
+  <div class="container" style="background-color:rgb(255, 251, 228)">
       <div class="row">
-        <div class="col">
-        <h2>Featured Image</h2>
+        <div class="col-md-8">
+        <h1>Featured Image</h1>
         <img src={{  marsdict.featured }}>
         </div>
         <div class="col">
@@ -42,13 +42,13 @@
 
       </div>
     </div>
-    <h3>Check out the hemispheres of Mars!</h3>
+        <h3>Check out the hemispheres of Mars!</h3>
     <ul style="list-style: none;">
-    {% for x in titlesandurls %}
-          <li>{{ x.titles }}: <img src={{ x.imgurls }}></li>
-        {% endfor %}
+    <li>{% for x in titlesandurls %}
+         {{ x.titles }}: <img src={{ x.imgurls }}>
+        {% endfor %}</li>
     </ul>
-  </div>
+    </div>  
 </body>
 
 </html>
