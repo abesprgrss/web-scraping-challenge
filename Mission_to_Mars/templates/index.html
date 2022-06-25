@@ -34,10 +34,18 @@
         <div> {{marsdict.table}}</div>        
       </div>
     </div> 
+    <div class="row">
+      <div class="col-md-3">
+        <div class="box">
+
+        </div>
+
+      </div>
+    </div>
     <h3>Check out the hemispheres of Mars!</h3>
     <ul style="list-style: none;">
-    {% for x in hemisphere %}
-          <li>{{ x.title }}: <img src={{ x.img_url }}></li>
+    {% for x in titlesandurls %}
+          <li>{{ x.titles }}: <img src={{ x.imgurls }}></li>
         {% endfor %}
     </ul>
   </div>

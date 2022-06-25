@@ -1,15 +1,15 @@
-from splinter import Browser
-from bs4 import BeautifulSoup as bs
-from webdriver_manager.chrome import ChromeDriverManager
 import flask
 import pandas as pd
 import splinter as spl
+from splinter import Browser
+from bs4 import BeautifulSoup as bs
+from webdriver_manager.chrome import ChromeDriverManager
 import pymongo
 
 
 def scrape():
     marsdict = {}
-    
+    titlesandurls=[]    
     
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -64,8 +64,8 @@ def scrape():
             'syrtis',
             'valles']
     # Fill buckets with data
-    hemisphere_titles = []
-    hemisphere_urls = []
+    hemisphere_dicts={}
+    titlesandurls=[]
 
     for link in links:
     # Visit spaceimages-mars.com
@@ -78,31 +78,22 @@ def scrape():
             html = browser.html
             soup = bs(html, "html.parser")
             
+            # Get titles
+            title = soup.find('div', class_='cover')
+            h2 = title.find('h2', class_='title').text.strip()
+            hemisphere_dicts['titles']=h2
+
             # Get the hi-res images
             images = soup.find('div', class_='downloads')
             click = images.find_all('a')[1]
             href = click['href']
             imgurl ='https://marshemispheres.com/' + href
-            hemisphere_urls.append({"img_url": imgurl})
+            hemisphere_dicts['imgurls']=imgurl
            
-          # Get titles
-            title = soup.find('div', class_='cover')
-            h2 = title.find('h2', class_='title').text.strip()
-            hemisphere_titles.append({'title': h2})
+            titlesandurls.append(hemisphere_dicts)
+            hemisphere_dicts={}
 
-            browser.quit()
-            
-            
-            
-            hemisphere = [
-                {'title': 'Cerberus Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/cerberus_enhanced.tif'},
-                {'title': 'Schiaparelli Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/schiaparelli_enhanced.tif'},
-                {'title': 'Syrtis Major Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/syrtis_major_enhanced.tif'},
-                {'title': 'Valles Marineris Hemisphere Enhanced', 'img_url': 'https://marshemispheres.com/images/valles_marineris_enhanced.tif'}
-            ]
-            
-            marsdict['images'] = hemisphere
-            
-        
+            browser.quit()       
+                          
 
     return marsdict
